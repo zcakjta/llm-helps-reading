@@ -4,3 +4,4 @@ langchain
 langchain-openai
 streamlit
 streamlit_card
+bs4
