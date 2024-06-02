@@ -31,7 +31,7 @@ pip install -r requirements.txt
 ````
 export OPENAI_API_KEY = "Your Openai_api_key"
 ````  
-6. Run app locally
+5. Run app locally
 ````
 streamlit run app_streamlit.py
 ````
