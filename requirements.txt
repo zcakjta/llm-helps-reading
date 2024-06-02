@@ -1,0 +1,7 @@
+langchain-core
+langchain-community
+langchain
+langchain-openai
+os
+streamlit
+streamlit_card
