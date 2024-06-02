@@ -27,7 +27,11 @@ git clone git@github.com:[YOUR_GITHUB_ACCOUNT]/llm-helps-reading.git
 cd llm-helps-reading
 pip install -r requirements.txt
 ````
-3. Run app locally
+4. Set local environment variables
+````
+export OPENAI_API_KEY = "Your Openai_api_key"
+````  
+6. Run app locally
 ````
 streamlit run app_streamlit.py
 ````
