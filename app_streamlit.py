@@ -148,6 +148,26 @@ please do your best. This is very important to my career
 """
 further_questions_answer_prompt = PromptTemplate.from_template(further_question_answer)
 
+# set it to your local env when deployed locally 
+os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
+
+llm = ChatOpenAI(model="gpt-4o-2024-05-13",temperature=0.0,streaming=True)
+llm_quick = ChatOpenAI(model="gpt-3.5-turbo",temperature=0.0,streaming=True)
+pro_chain = RunnablePassthrough.assign(
+    summary = RunnablePassthrough.assign(
+        context = lambda x: scrape_text(x["content"]) if x["is_url"] else x["content"]
+    ) | summary_prompt_pro |llm| StrOutputParser(),word_count = lambda x: count_words(scrape_text(x["content"]))if x["is_url"] else x["content"]
+)
+
+quick_chain = RunnablePassthrough.assign(
+    summary = RunnablePassthrough.assign(
+        context = lambda x: scrape_text(x["content"]) if x["is_url"] else x["content"]
+    ) | summary_prompt_quick |llm| StrOutputParser(),word_count = lambda x: count_words(scrape_text(x["content"]))if x["is_url"] else x["content"]
+)
+
+further_questions_chain = further_questions_prompt|llm|StrOutputParser()|json.loads
+further_questions_answer_chain = further_questions_answer_prompt|llm|StrOutputParser()
+
 
 
 
@@ -233,23 +253,6 @@ temperature = st.sidebar.slider(
     )
 option = st.sidebar.radio("总结类型:",("快速总结","深度总结"))
 
-
-llm = ChatOpenAI(model="gpt-4o-2024-05-13",temperature=0.0,streaming=True,api_key=openai_api_key)
-llm_quick = ChatOpenAI(model="gpt-3.5-turbo",temperature=0.0,streaming=True,api_key=openai_api_key)
-pro_chain = RunnablePassthrough.assign(
-    summary = RunnablePassthrough.assign(
-        context = lambda x: scrape_text(x["content"]) if x["is_url"] else x["content"]
-    ) | summary_prompt_pro |llm| StrOutputParser(),word_count = lambda x: count_words(scrape_text(x["content"]))if x["is_url"] else x["content"]
-)
-
-quick_chain = RunnablePassthrough.assign(
-    summary = RunnablePassthrough.assign(
-        context = lambda x: scrape_text(x["content"]) if x["is_url"] else x["content"]
-    ) | summary_prompt_quick |llm| StrOutputParser(),word_count = lambda x: count_words(scrape_text(x["content"]))if x["is_url"] else x["content"]
-)
-
-further_questions_chain = further_questions_prompt|llm|StrOutputParser()|json.loads
-further_questions_answer_chain = further_questions_answer_prompt|llm|StrOutputParser()
 
 
 with st.form('my_form'):
