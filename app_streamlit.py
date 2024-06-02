@@ -242,7 +242,7 @@ with col3_card:
 
 )
 
-openai_api_key = st.sidebar.text_input('OpenAI API Key',key = 'chatbot_api_key',type='password')
+
 
 temperature = st.sidebar.slider(
         '模型回复随机性',
@@ -268,12 +268,8 @@ if 'markdwon_content' in st.session_state:
         st.markdown(st.session_state['markdown_content'])
 
 if submitted:
-        if not openai_api_key:
-             st.info("请在侧边栏输入API key")
-             st.stop()
         if st.session_state:
             st.session_state.clear()
-            st.session_state['chatbot_api_key'] = openai_api_key
         with st.spinner('✍🏼阅读助手总结中....'):
             content, summary, word_count = generate_response(input_text,temperature,option)           
             reading_time = calculate_reading_time(word_count)
