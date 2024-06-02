@@ -197,7 +197,7 @@ with col2_card:
     reddit_card = card(
     title="",
     text="AI资讯 from LocalLLaMA",
-    image="https://developer-blogs.nvidia.com/wp-content/uploads/2024/04/dev-llama3-blog-1920x1080-1.png",
+    image="https://www.naesp.org/wp-content/uploads/2023/08/Llama-scaled.jpeg",
     url="https://www.reddit.com/r/LocalLLaMA/",
         styles={
         "card": {
