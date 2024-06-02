@@ -3,7 +3,7 @@ import re
 import json
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import requests
 from bs4 import BeautifulSoup
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
