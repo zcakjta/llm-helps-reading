@@ -149,7 +149,7 @@ please do your best. This is very important to my career
 further_questions_answer_prompt = PromptTemplate.from_template(further_question_answer)
 
 # set it to your local env when deployed locally 
-os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
+#os.environ["OPENAI_API_KEY"] = st.secrets["openai_api_key"]
 
 llm = ChatOpenAI(model="gpt-4o-2024-05-13",temperature=0.0,streaming=True)
 llm_quick = ChatOpenAI(model="gpt-3.5-turbo",temperature=0.0,streaming=True)
