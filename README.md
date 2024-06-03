@@ -1,4 +1,4 @@
-# llm-helps-reading
+# 📖 llm-helps-reading
 An AI-powered reading helper that accelerates you reding process by providing comprehensive summaries and making thoughtful discussions.
 Powered by streamlit.
 
@@ -6,14 +6,14 @@ Powered by streamlit.
 
 
 
-# Product Roadmap
- Add support for summarizing URls and text content.
- Support user prompt to chat about summaries.
- Add LLM supports for Chinese LLMs
- Add research agent and RAG support 
- Implement support for chatting with local documents
- Implement support for AI search
- Implement search history functionality
+# 🗺️ Product Roadmap
+  - [x] Add support for summarizing URls and text content.
+  - [x] Support user prompt to chat about summaries.
+  - [ ] Add LLM supports for Chinese LLMs
+  - [ ] Add research agent and RAG support 
+  - [ ] Implement support for chatting with local documents
+  - [ ] Implement support for AI search
+  - [ ] Implement search history functionality
  
 
 # 🚀 Quickstart
